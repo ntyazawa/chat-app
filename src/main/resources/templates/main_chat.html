@@ -1,25 +1,68 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <div th:fragment="main_chat">
 
-<div class="chat-header">
-  <div class="left-header">
-  <div class="roomname">
+  <div class="chat-header">
+    <div class="left-header">
+      <div class="roomname">
 
-    うさぎ組</div>
-  </div>
+        うさぎ組</div>
+    </div>
 
-  <div class="chatend">
-    <div class="right-header">
+    <div class="chatend">
+      <div class="right-header">
 
-    <a href="#">チャットを終了する</a>
+        <a href="#">チャットを終了する</a>
+      </div>
+    </div>
   </div>
-  </div>
-</div>
 
   <div class="messages">
+
+    <div class="message">
+      <div class="top-message">
+        <div class="sent-user">ao</div>
+
+        <div class="time">
+          2026/2/3(thu) 19:44
+        </div>
+      </div>
+
+      <div class="bottom-message">
+        <div class="sent-message">
+          ご飯食べる
+        </div>
+      </div>
+
+
+      <div class="message">
+        <div class="top-message">
+          <div class="sent-user">yazawa</div>
+          <div class="time">
+            2026/2/3(thu) 19:46
+          </div>
+        </div>
+
+        <div class="bottom-message">
+          <div class="sent-message">
+            何食べるの
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
+
   <div class="form">
+    <div class="form-sent">
+      <input class="form-message" placeholder="type a message">
+       <label class="form-image">
+        <span class="image-file">画像</span>
+        <input type="file" class="hidden">
+      </label>  
+    </div>
+    <input class="form-submit" type="submit" value="送信">
   </div>
 </div>
+
 </html>

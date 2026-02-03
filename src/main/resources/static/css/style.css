@@ -102,10 +102,83 @@
   background-color: #FAFAFA;
   height: calc(100vh - 100px - 90px);
   padding: 46px 40px 0;
+  overflow: scroll;
+
 }
+
+.message{
+  margin: 10px 0 0 0;
+}
+
+.top-message{
+display: flex;
+}
+
+.sent-user{
+  font-size: 16px;
+  color: #434A54;
+  
+}
+
+.time{
+  font-size: 12px;
+  color: #999;
+  padding-left :10px;
+}
+
+
+.bottom-message{
+  margin-top: 10px;
+}
+
+
+.sent-message{
+  font-size: 14px;
+  color: #434A54;
+  margin-bottom: 40px;
+}
+
 
 .form {
   background-color: #DDDDDD;
   height: 90px;
   padding: 20px 40px;
+  display: flex;
+}
+
+.form-sent{
+  background-color: white;
+  width: 100%;
+  display: flex;
+}
+
+.form-message{
+  border: none;
+  height: 50px;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.form-submit{
+    background-color: #38AEF0;
+  border: none;
+  color: white;
+  font-size: 16px;
+  height: 50px;
+  margin-left: 15px;
+  padding: 0 20px;
+}
+
+.form-image {
+  font-size: 12px;
+  background-color: lightblue;
+  color: white;
+  padding: 12px;
+  width: 60px;
+  margin: 5px 10px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }
