@@ -3,7 +3,7 @@
 
   <div class="side-bar-header">
     <div class="header-name">
-      <a href="#">ao</a>
+      <a th:href="@{/users/{id}/edit(id=${user.id})}"th:text="${user.name}">ユーザー名</a>
     </div>
     <div class="create-chat">
       <a href="#">チャット作成</a>
