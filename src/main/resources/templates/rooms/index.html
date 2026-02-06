@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -7,12 +8,10 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="side_bar">
-      <div th:insert="~{side_bar :: side_bar}"></div>
+
+    <div class="side-bar">
+        <div th:replace="~{side_bar :: side_bar}"></div>
     </div>
-    <div class="main_chat">
-      <div th:insert="~{main_chat :: main_chat}"></div>
     </div>
-  </div>
 </body>
 </html>
