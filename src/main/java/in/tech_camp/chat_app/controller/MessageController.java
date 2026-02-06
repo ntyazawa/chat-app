@@ -23,6 +23,7 @@ import in.tech_camp.chat_app.repository.RoomUserRepository;
 import in.tech_camp.chat_app.repository.UserRepository;
 import lombok.AllArgsConstructor;
 
+
 @Controller
 @AllArgsConstructor
 public class MessageController {
@@ -47,6 +48,9 @@ public class MessageController {
     model.addAttribute("messageForm", new MessageForm());
      model.addAttribute("roomId", roomId);
 
+      List<MessageEntity> messages = messageRepository.findByRoomId(roomId);
+    model.addAttribute("messages", messages);
+
     return "messages/index";
   }
 
@@ -68,6 +72,6 @@ public class MessageController {
     }
 
     return "redirect:/rooms/" + roomId + "/messages";
-  }
+  }  
   
 }
