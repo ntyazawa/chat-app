@@ -10,4 +10,5 @@ public class RoomEntity {
   private String name;
 
   private List<RoomUserEntity> roomUsers;
+  private List<MessageEntity> message;
 }
