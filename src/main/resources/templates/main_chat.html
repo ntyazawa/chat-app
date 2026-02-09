@@ -3,9 +3,7 @@
 
   <div class="chat-header">
     <div class="left-header">
-      <div class="roomname">
-
-        うさぎ組</div>
+     <div class="room-name" th:text="${room.name}">ルーム名</div>
     </div>
 
     <div class="chatend">
@@ -29,8 +27,7 @@
   </div>
 
 
-   <form th:action="@{/rooms/{roomId}/messages(roomId=${roomId})}" method="post" th:object="${messageForm}" class="form">
-    <div class="form-sent">
+  <form th:action="@{/rooms/{roomId}/messages(roomId=${room.id})}" method="post" th:object="${messageForm}" class="form">    <div class="form-sent">
        <input th:field="*{content}" class="form-message" placeholder= "type a message">
       <label class="form-image">
         <span class="image-file">画像</span>
