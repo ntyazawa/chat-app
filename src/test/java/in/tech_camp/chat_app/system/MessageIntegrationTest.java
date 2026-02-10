@@ -220,13 +220,44 @@ public class MessageIntegrationTest {
   }
 
 
-  @Test
+    @Test
   public void テキストと画像の投稿に成功する() throws Exception {
     // サインインする
+    MockHttpSession session = LoginSupport.login(mockMvc, userForm1);
+
     // 作成されたチャットルームへ遷移する
+    mockMvc.perform(get("/rooms/{roomId}/messages", roomEntity.getId()).session(session))
+            .andExpect(status().isOk())
+            .andExpect(view().name("messages/index"));
+
+    long initialCount = messageRepository.count(); 
+
     // テキストと画像のメッセージを投稿し、チャットルームに遷移していることを確認する
+    mockMvc.perform(multipart("/rooms/{roomId}/messages", roomEntity.getId())
+            .file((MockMultipartFile)messageForm.getImage())
+            .param("content", messageForm.getContent())
+            .session(session).with(csrf()))
+            .andExpect(status().isFound())
+            .andExpect(redirectedUrl("/rooms/" + roomEntity.getId() + "/messages"));
+
     // メッセージの数が1増加していることを確認する
+    long afterCount = messageRepository.count();
+    assertEquals(initialCount + 1, afterCount);
+
     // チャットルームには先ほどの投稿が存在することを確認する（テキスト）
+    mockMvc.perform(get("/rooms/{roomId}/messages", roomEntity.getId()).session(session))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString(messageForm.getContent())));    
+
     // チャットルームには先ほどの投稿が存在することを確認する（画像）
+    List<MessageEntity> messageList = messageRepository.findByRoomId(roomEntity.getId());
+    MessageEntity message = messageList.get(0);
+
+    MvcResult pageResult = mockMvc.perform(get("/rooms/{roomId}/messages", roomEntity.getId()).session(session))
+                                    .andReturn();
+    String pageContent = pageResult.getResponse().getContentAsString();
+    Document document = Jsoup.parse(pageContent);
+    Element divElement = document.selectFirst("img[src="+ message.getImage()+"]");
+    assertNotNull(divElement);
   }
 }
