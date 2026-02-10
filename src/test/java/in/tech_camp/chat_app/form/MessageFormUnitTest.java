@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.validation.BindingResult;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 import in.tech_camp.chat_app.factories.MessageFormFactory;
 

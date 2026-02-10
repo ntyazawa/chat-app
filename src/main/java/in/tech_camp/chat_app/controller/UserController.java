@@ -140,6 +140,13 @@ public String login(@RequestParam(value = "error", required = false) String erro
     // 成功したらトップページへ
     return "redirect:/";
   }
+
+ @GetMapping("/login")
+public String login(Model model) {
+    // ⭕️ HTMLに合わせて "loginForm" を渡す！クラスも LoginForm にする！
+    model.addAttribute("loginForm", new LoginForm());
+    return "users/login";
+}
   }
   
   
